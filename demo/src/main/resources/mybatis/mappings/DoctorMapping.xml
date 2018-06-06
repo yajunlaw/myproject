@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjb.dao" >
+
+  <resultMap id="BaseResultMap" type="com.bjb.pojo.Doctor" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="DOCTOR_NAME" property="doctorName" jdbcType="VARCHAR" />
+    <result column="DOCTOR_POSITION" property="doctorPosition" jdbcType="VARCHAR" />
+    <result column="AVATAR_URL" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="DEL_FLAG" property="delFlag" jdbcType="INTEGER" />
+    <result column="CREATE_ID" property="createId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="UPDATE_ID" property="updateId" jdbcType="INTEGER" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="DATE" />
+  </resultMap>
+  
+  <sql id="Base_Table_Name">
+  	yt_doctor
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    ID, DOCTOR_NAME, DOCTOR_POSITION, AVATAR_URL, DEL_FLAG, CREATE_ID, CREATE_TIME, UPDATE_ID, UPDATE_TIME
+  </sql>
+  
+  <select id="selectDoctors" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from 
+	<include refid="Base_Table_Name" />
+  </select>
+  
+  <update id="updateDoctor" parameterType="int">
+  	update
+  	<include refid="Base_Table_Name" />
+  	set
+  		DEL_FLAG = 1
+  	where
+  		id = #{id}
+  </update>
+</mapper>
