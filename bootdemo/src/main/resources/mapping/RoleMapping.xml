@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjb.springboot.bootdemo.dao.RoleDao" >
+  
+  <resultMap id="BaseResultMap" type="com.bjb.springboot.bootdemo.pojo.Role" >
+    <id column="R_ID" property="rId" jdbcType="INTEGER" />
+    <result column="R_NAME" property="rName" jdbcType="VARCHAR" />
+    <result column="R_ALIAS" property="rAlias" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Table_Name">
+  	yt_role
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    R_ID, R_NAME, R_ALIAS
+  </sql>
+  
+  <select id="selectRoleByUser" resultMap="BaseResultMap" parameterType="String">
+    SELECT
+    	yt_role.R_ID,R_NAME,R_ALIAS
+    FROM 
+		yt_role,yt_user
+	WHERE
+		USERNAME = #{username}
+	AND
+		yt_role.R_ID = yt_user.R_ID
+  </select>
+</mapper>

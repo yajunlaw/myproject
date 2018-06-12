@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjb.springboot.bootdemo.dao.PermissionDao" >
+  
+  <resultMap id="BaseResultMap" type="com.bjb.springboot.bootdemo.pojo.Permission" >
+    <id column="P_ID" property="pId" jdbcType="INTEGER" />
+    <result column="P_NAME" property="pName" jdbcType="VARCHAR" />
+    <result column="P_ALIAS" property="pAlias" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Table_Name">
+  	yt_permission
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    P_ID, P_NAME, P_ALIAS
+  </sql>
+  
+  <select id="selectPermissionByRole" resultMap="BaseResultMap" parameterType="Integer">
+    SELECT
+    	P.P_ID,P.P_NAME,P.P_ALIAS
+    FROM 
+		yt_permission P,yt_role R,yt_role_permission RP
+	WHERE
+		R.R_ID = #{rid}
+	AND
+		R.R_ID = RP.R_ID
+	AND
+		P.P_ID = RP.P_ID
+  </select>
+</mapper>
