@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<% 
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
+pageContext.setAttribute("basePath",basePath); 
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +33,7 @@
 			<div style="width:10%;float:left">${doctor.delFlag}</div>
 			<div style="width:10%;float:left">${doctor.createId}</div>
 			<div style="width:10%;float:left">${doctor.createTime}</div>
-			<shiro:hasPermission name="add"><div style="width:10%;float:left"><a href="/doctor/modify?id=${doctor.id }">修改</a><a href="">删除</a></div></shiro:hasPermission>
+			<shiro:hasPermission name="add"><div style="width:10%;float:left"><a href="${basePath }/doctor/modify?id=${doctor.id }">修改</a><a href="">删除</a></div></shiro:hasPermission>
 	    </c:forEach>
     </div>
 </body>

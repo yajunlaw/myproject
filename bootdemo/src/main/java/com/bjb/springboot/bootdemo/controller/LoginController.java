@@ -2,11 +2,11 @@ package com.bjb.springboot.bootdemo.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,9 +15,9 @@ import com.bjb.springboot.bootdemo.pojo.User;
 @Controller
 public class LoginController {
 
-	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static Logger logger = LogManager.getLogger(LoginController.class);
 	
-	@RequestMapping("/to_login")
+	@RequestMapping("to_login")
 	public String to_login() {
 		
 		return "login";

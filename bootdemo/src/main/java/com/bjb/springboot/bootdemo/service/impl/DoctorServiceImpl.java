@@ -3,7 +3,6 @@ package com.bjb.springboot.bootdemo.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +18,6 @@ public class DoctorServiceImpl implements DoctorService {
 	@Autowired
 	private DoctorDao doctorDao;
 	
-	@Cacheable(cacheNames="doctor.all")
 	public PageInfo<Doctor> findAllDoctor(int pageNum, int pageSize) {
 		
 		PageHelper.startPage(pageNum, pageSize);

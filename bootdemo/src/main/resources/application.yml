@@ -26,6 +26,20 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
        
+   
+  #mail设置
+  mail:
+    host: smtp.163.com
+    username: m18612103586@163.com
+    password: yajunlaw1113
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    
   #Jedis配置
   jedis:
     pool:
@@ -42,10 +56,10 @@ mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.bjb.springboot.bootdemo.dao
 
-# 打印sql  
-logging:  
-  level:   
-    com.bjb.springboot.bootdemo.dao: DEBUG  
+# 打印sql
+logging:
+  level:
+    com.bjb.springboot.bootdemo.dao: DEBUG
 
 #pagehelper分页插件
 pagehelper:

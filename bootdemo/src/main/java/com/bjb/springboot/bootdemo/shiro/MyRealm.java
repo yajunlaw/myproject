@@ -2,6 +2,8 @@ package com.bjb.springboot.bootdemo.shiro;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -11,8 +13,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ import com.bjb.springboot.bootdemo.service.UserService;
 @Component
 public class MyRealm extends AuthorizingRealm {
 
-	private static Logger logger = LoggerFactory.getLogger(MyRealm.class);
+	private static Logger logger = LogManager.getLogger(MyRealm.class);
 	
 	@Autowired
 	private UserService userService;
